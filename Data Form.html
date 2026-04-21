@@ -2,113 +2,91 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Employees Personal Data Form</title>
+<title>Government Employee Form</title>
 
 <style>
 body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: #eef2f7;
+  font-family: "Times New Roman", serif;
+  background: #f4f6f9;
   margin: 0;
 }
 
 .container {
-  width: 700px;
-  margin: 40px auto;
+  width: 800px;
+  margin: 30px auto;
   background: #fff;
-  padding: 25px 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  padding: 25px;
+  border: 2px solid #000;
 }
 
 /* HEADER */
 .header {
   text-align: center;
-  border-bottom: 3px solid #0b3d91;
-  padding-bottom: 15px;
+  border-bottom: 2px solid #000;
+  padding-bottom: 10px;
   margin-bottom: 20px;
 }
 
-.logo {
-  width: 80px;
-  margin-bottom: 10px;
+.header img {
+  width: 70px;
 }
 
 .header h2 {
   margin: 5px 0;
-  color: #0b3d91;
-  font-size: 20px;
+  font-size: 22px;
+  text-transform: uppercase;
 }
 
 .header p {
-  margin: 0;
+  margin: 2px 0;
   font-size: 14px;
-  color: #555;
 }
 
-/* SECTION TITLES */
+/* SECTION */
 .section-title {
-  margin-top: 20px;
-  margin-bottom: 10px;
   font-weight: bold;
-  color: #0b3d91;
-  border-left: 4px solid #0b3d91;
-  padding-left: 10px;
+  background: #eaeaea;
+  padding: 5px;
+  border: 1px solid #000;
+  margin-top: 20px;
 }
 
-/* FORM GRID */
-.form-group {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 12px;
+/* TABLE FORM */
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.form-group div {
-  flex: 1;
-}
-
-label {
-  font-weight: 600;
-  font-size: 13px;
+td {
+  border: 1px solid #000;
+  padding: 8px;
 }
 
 input, textarea, select {
   width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 13px;
-}
-
-textarea {
-  resize: vertical;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 14px;
 }
 
 /* IMAGE */
-.preview img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+#previewImg {
+  width: 120px;
   margin-top: 10px;
   display: none;
 }
 
 /* BUTTON */
 button {
-  width: 100%;
-  padding: 12px;
   margin-top: 20px;
-  background: #0b3d91;
+  width: 100%;
+  padding: 10px;
+  background: #000;
   color: #fff;
   border: none;
-  font-size: 15px;
-  border-radius: 6px;
   cursor: pointer;
-  transition: 0.3s;
-}
-
-button:hover {
-  background: #082c6c;
+  font-weight: bold;
 }
 </style>
 </head>
@@ -118,152 +96,118 @@ button:hover {
 <div class="container">
 
 <div class="header">
-  <img src="LOGO.png" class="logo">
+  <img src="LOGO.png">
   <h2>Government of Sindh</h2>
   <p>Education & Literacy Department</p>
-  <p><b>Employees Personal Data Form</b></p>
+  <p><b>Employee Personal Data Form</b></p>
 </div>
 
 <form id="dataForm">
 
-<!-- PERSONAL -->
-<div class="section-title">Personal Information</div>
+<div class="section-title">1. Personal Information</div>
+<table>
+<tr>
+  <td>Full Name</td>
+  <td><input type="text" name="name" required></td>
+  <td>Email</td>
+  <td><input type="email" name="email" required></td>
+</tr>
 
-<div class="form-group">
-  <div>
-    <label>Full Name</label>
-    <input type="text" name="name" required>
-  </div>
-  <div>
-    <label>Email</label>
-    <input type="email" name="email" required>
-  </div>
-</div>
+<tr>
+  <td>Phone</td>
+  <td><input type="text" name="phone" required></td>
+  <td>CNIC</td>
+  <td><input type="text" name="cnic" required></td>
+</tr>
 
-<div class="form-group">
-  <div>
-    <label>Phone</label>
-    <input type="tel" name="phone" required>
-  </div>
-  <div>
-    <label>CNIC</label>
-    <input type="text" name="cnic" required>
-  </div>
-</div>
-
-<div class="form-group">
-  <div>
-    <label>Date of Birth</label>
-    <input type="date" name="dob" required>
-  </div>
-  <div>
-    <label>Gender</label>
+<tr>
+  <td>Date of Birth</td>
+  <td><input type="date" name="dob" required></td>
+  <td>Gender</td>
+  <td>
     <select name="gender" required>
       <option value="">Select</option>
       <option>Male</option>
       <option>Female</option>
     </select>
-  </div>
-</div>
+  </td>
+</tr>
 
-<label>Address</label>
-<textarea name="address" required></textarea>
+<tr>
+  <td>Address</td>
+  <td colspan="3"><textarea name="address" required></textarea></td>
+</tr>
+</table>
 
-<!-- JOB -->
-<div class="section-title">Employment Details</div>
+<div class="section-title">2. Employment Details</div>
+<table>
+<tr>
+  <td>School Name</td>
+  <td><input type="text" name="school" required></td>
+  <td>Designation</td>
+  <td><input type="text" name="designation" required></td>
+</tr>
 
-<div class="form-group">
-  <div>
-    <label>School Name</label>
-    <input type="text" name="school" required>
-  </div>
-  <div>
-    <label>Designation</label>
-    <input type="text" name="designation" required>
-  </div>
-</div>
+<tr>
+  <td>Offer Letter No / Date</td>
+  <td><input type="text" name="offerLetter" required></td>
+  <td>Posting Letter No / Date</td>
+  <td><input type="text" name="postingLetter" required></td>
+</tr>
 
-<div class="form-group">
-  <div>
-    <label>Offer Letter No</label>
-    <input type="text" name="offerLetter" required>
-  </div>
-  <div>
-    <label>Posting Letter No</label>
-    <input type="text" name="postingLetter" required>
-  </div>
-</div>
+<tr>
+  <td>Medical No</td>
+  <td><input type="text" name="medicalNo" required></td>
+  <td>Medical Date</td>
+  <td><input type="date" name="medicalDate" required></td>
+</tr>
 
-<div class="form-group">
-  <div>
-    <label>Medical No</label>
-    <input type="text" name="offerLetter" required>
-  </div>
-  <div>
-    <label>Medical Date</label>
-    <input type="text" name="postingLetter" required>
-  </div>
-</div>
+<tr>
+  <td>TID Number</td>
+  <td><input type="text" name="tid" required></td>
+  <td>Salary</td>
+  <td><input type="text" name="salary" required></td>
+</tr>
+</table>
 
-<div class="form-group">
-  <div>
-    <label>TID Number</label>
-    <input type="text" name="tid" required>
-  </div>
-  <div>
-    <label>Salary</label>
-    <input type="text" name="salary" required>
-  </div>
-</div>
+<div class="section-title">3. Bank Details</div>
+<table>
+<tr>
+  <td>Bank Name</td>
+  <td><input type="text" name="bank" required></td>
+  <td>IBAN</td>
+  <td><input type="text" name="iban" required></td>
+</tr>
+</table>
 
-<!-- BANK -->
-<div class="section-title">Bank Details</div>
-
-<div class="form-group">
-  <div>
-    <label>Bank Name</label>
-    <input type="text" name="bank" required>
-  </div>
-  <div>
-    <label>IBAN</label>
-    <input type="text" name="iban" required>
-  </div>
-</div>
-
-<!-- IMAGE -->
-<div class="section-title">Profile Picture</div>
-
+<div class="section-title">4. Profile Picture</div>
 <input type="file" id="imageInput" accept="image/*">
-
-<div class="preview">
-  <img id="previewImg">
-</div>
+<br>
+<img id="previewImg">
 
 <button type="submit">Submit Application</button>
 
 </form>
-
 </div>
 
 <script>
-const scriptURL = "https://script.google.com/macros/s/AKfycby6BhtyTqHOPNie3L1ax0sJSsVDX1ZwTW4Cthhp7-CGMhqFJ2rhORtkTz91mmAGnkdV/exec";
-const form = document.getElementById("dataForm");
+const scriptURL = "https://script.google.com/macros/s/AKfycby1XFlBAb2jg6eU511aRMYgBagNqs3Rw6sr_NRp1ndaBBuPdRuEvdfnc2mbT-6ccN7j/exec";
 
+const form = document.getElementById("dataForm");
 let base64Image = "";
 
-// Image Preview
+// Image preview
 document.getElementById("imageInput").addEventListener("change", function(){
   const file = this.files[0];
+  if (!file) return;
+
   const reader = new FileReader();
-
-  reader.onload = function(e){
+  reader.onload = e => {
     base64Image = e.target.result;
-    const img = document.getElementById("previewImg");
-    img.src = base64Image;
-    img.style.display = "block";
+    document.getElementById("previewImg").src = base64Image;
+    document.getElementById("previewImg").style.display = "block";
   };
-
-  if(file) reader.readAsDataURL(file);
+  reader.readAsDataURL(file);
 });
 
 // Submit
@@ -271,25 +215,20 @@ form.addEventListener("submit", function(e){
   e.preventDefault();
 
   const data = Object.fromEntries(new FormData(form).entries());
-  data.image = base64Image || "";
+  data.image = base64Image;
 
   fetch(scriptURL, {
     method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
     body: new URLSearchParams(data)
   })
   .then(res => res.text())
-  .then(msg => {
-    alert(msg);
-    if (msg.includes("Success")) {
-      form.reset();
-      base64Image = "";
-      document.getElementById("previewImg").style.display = "none";
-    }
-  })
-  .catch(() => alert("Error submitting form"));
+  .then(msg => alert(msg))
+  .catch(err => alert("Error: " + err.message));
 });
 </script>
 
 </body>
 </html>
-```
