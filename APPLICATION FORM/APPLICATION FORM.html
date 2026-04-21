@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Employees Personal Data Form</title>
+
+<style>
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #eef2f7;
+  margin: 0;
+}
+
+.container {
+  width: 700px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  border-bottom: 3px solid #0b3d91;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+.header h2 {
+  margin: 5px 0;
+  color: #0b3d91;
+  font-size: 20px;
+}
+
+.header p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* SECTION TITLES */
+.section-title {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #0b3d91;
+  border-left: 4px solid #0b3d91;
+  padding-left: 10px;
+}
+
+/* FORM GRID */
+.form-group {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 12px;
+}
+
+.form-group div {
+  flex: 1;
+}
+
+label {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* IMAGE */
+.preview img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-top: 10px;
+  display: none;
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background: #0b3d91;
+  color: #fff;
+  border: none;
+  font-size: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #082c6c;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+  <img src="LOGO.png" class="logo">
+  <h2>Government of Sindh</h2>
+  <p>Education & Literacy Department</p>
+  <p><b>Employees Personal Data Form</b></p>
+</div>
+
+<form id="dataForm">
+
+<!-- PERSONAL -->
+<div class="section-title">Personal Information</div>
+
+<div class="form-group">
+  <div>
+    <label>Full Name</label>
+    <input type="text" name="name" required>
+  </div>
+  <div>
+    <label>Email</label>
+    <input type="email" name="email" required>
+  </div>
+</div>
+
+<div class="form-group">
+  <div>
+    <label>Phone</label>
+    <input type="tel" name="phone" required>
+  </div>
+  <div>
+    <label>CNIC</label>
+    <input type="text" name="cnic" required>
+  </div>
+</div>
+
+<div class="form-group">
+  <div>
+    <label>Date of Birth</label>
+    <input type="date" name="dob" required>
+  </div>
+  <div>
+    <label>Gender</label>
+    <select name="gender" required>
+      <option value="">Select</option>
+      <option>Male</option>
+      <option>Female</option>
+    </select>
+  </div>
+</div>
+
+<label>Address</label>
+<textarea name="address" required></textarea>
+
+<!-- JOB -->
+<div class="section-title">Employment Details</div>
+
+<div class="form-group">
+  <div>
+    <label>School Name</label>
+    <input type="text" name="school" required>
+  </div>
+  <div>
+    <label>Designation</label>
+    <input type="text" name="designation" required>
+  </div>
+</div>
+
+<div class="form-group">
+  <div>
+    <label>Offer Letter No</label>
+    <input type="text" name="offerLetter" required>
+  </div>
+  <div>
+    <label>Posting Letter No</label>
+    <input type="text" name="postingLetter" required>
+  </div>
+</div>
+
+<div class="form-group">
+  <div>
+    <label>TID Number</label>
+    <input type="text" name="tid" required>
+  </div>
+  <div>
+    <label>Salary</label>
+    <input type="text" name="salary" required>
+  </div>
+</div>
+
+<!-- BANK -->
+<div class="section-title">Bank Details</div>
+
+<div class="form-group">
+  <div>
+    <label>Bank Name</label>
+    <input type="text" name="bank" required>
+  </div>
+  <div>
+    <label>IBAN</label>
+    <input type="text" name="iban" required>
+  </div>
+</div>
+
+<!-- IMAGE -->
+<div class="section-title">Profile Picture</div>
+
+<input type="file" id="imageInput" accept="image/*">
+
+<div class="preview">
+  <img id="previewImg">
+</div>
+
+<button type="submit">Submit Application</button>
+
+</form>
+
+</div>
+
+<script>
+const scriptURL = "https://script.google.com/macros/s/AKfycby6BhtyTqHOPNie3L1ax0sJSsVDX1ZwTW4Cthhp7-CGMhqFJ2rhORtkTz91mmAGnkdV/exec";
+const form = document.getElementById("dataForm");
+
+let base64Image = "";
+
+// Image Preview
+document.getElementById("imageInput").addEventListener("change", function(){
+  const file = this.files[0];
+  const reader = new FileReader();
+
+  reader.onload = function(e){
+    base64Image = e.target.result;
+    const img = document.getElementById("previewImg");
+    img.src = base64Image;
+    img.style.display = "block";
+  };
+
+  if(file) reader.readAsDataURL(file);
+});
+
+// Submit
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const data = Object.fromEntries(new FormData(form).entries());
+  data.image = base64Image || "";
+
+  fetch(scriptURL, {
+    method: "POST",
+    body: new URLSearchParams(data)
+  })
+  .then(res => res.text())
+  .then(msg => {
+    alert(msg);
+    if (msg.includes("Success")) {
+      form.reset();
+      base64Image = "";
+      document.getElementById("previewImg").style.display = "none";
+    }
+  })
+  .catch(() => alert("Error submitting form"));
+});
+</script>
+
+</body>
+</html>
+```
